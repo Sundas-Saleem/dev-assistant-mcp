@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sundas Saleem — Senior Software Engineer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #F7F8FA;
+  color: #1B2A4A;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1B2A4A;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-logo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: #ffffff; }
+
+/* HERO */
+.hero {
+  background-color: #1B2A4A;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2rem 4rem;
+  border-bottom: 3px solid #4A90C4;
+}
+.hero-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0.18;
+}
+.hero-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-tag {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #4A90C4;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.hero h1 strong { font-weight: 600; }
+.hero-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+.btn:hover { opacity: 0.82; }
+.btn-primary { background: #4A90C4; color: #ffffff; }
+.btn-outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+
+/* SECTIONS */
+section { padding: 4rem 2rem; }
+section:nth-of-type(even) { background: #ffffff; }
+.section-inner { max-width: 880px; margin: 0 auto; }
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #4A90C4;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #1B2A4A;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #DDE1E8;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.about-text p {
+  color: #5A6478;
+  font-size: 0.94rem;
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+.about-meta { display: flex; flex-direction: column; gap: 1rem; }
+.meta-item {
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid #4A90C4;
+  background: #F7F8FA;
+}
+.meta-item-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #5A6478;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.meta-item-value { font-size: 0.875rem; font-weight: 500; color: #1B2A4A; }
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+.skill-group-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1B2A4A;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #DDE1E8;
+}
+.skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.skill-list li {
+  font-size: 0.875rem;
+  color: #5A6478;
+  padding-left: 0.8rem;
+  position: relative;
+  line-height: 1.5;
+}
+.skill-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  background: #4A90C4;
+  border-radius: 50%;
+}
+
+/* EXPERIENCE */
+.exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
+.exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; }
+.exp-date { font-size: 12px; font-weight: 500; color: #4A90C4; margin-bottom: 0.2rem; }
+.exp-company { font-size: 13px; color: #5A6478; }
+.exp-title { font-size: 1rem; font-weight: 600; color: #1B2A4A; margin-bottom: 0.3rem; }
+.exp-desc { font-size: 0.875rem; color: #5A6478; font-style: italic; margin-bottom: 0.75rem; line-height: 1.6; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+.exp-bullets li {
+  font-size: 0.875rem;
+  color: #5A6478;
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.65;
+}
+.exp-bullets li::before { content: '—'; position: absolute; left: 0; color: #4A90C4; font-weight: 500; }
+.exp-divider { border: none; border-top: 1px solid #DDE1E8; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.contact-text p { color: #5A6478; font-size: 0.94rem; line-height: 1.8; margin-bottom: 1.5rem; }
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #1B2A4A;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  background: #F7F8FA;
+  border: 1px solid #DDE1E8;
+  border-radius: 3px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.contact-link:hover { border-color: #4A90C4; color: #4A90C4; }
+.contact-link svg { opacity: 0.45; flex-shrink: 0; }
+.contact-avail {
+  padding: 1.5rem;
+  background: #1B2A4A;
+  border-radius: 3px;
+}
+.contact-avail p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+.contact-avail strong { color: #ffffff; font-weight: 500; }
+.dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: #4CAF50;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  position: relative;
+  top: -1px;
+}
+
+footer {
+  background: #1B2A4A;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+footer p { font-size: 12px; color: rgba(255,255,255,0.28); letter-spacing: 0.04em; }
+
+@media (max-width: 680px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Sundas Saleem</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <p class="hero-tag">Senior Software Engineer · Karachi, PK</p>
+    <h1>Building systems that<br><strong>scale under pressure.</strong></h1>
+    <p class="hero-subtitle">Backend engineer specializing in distributed systems, real-time infrastructure, and AI agent development. 6+ years delivering production platforms at scale.</p>
+    <div class="hero-cta">
+      <a href="mailto:sundask4.sk@gmail.com" class="btn btn-primary">Get in touch</a>
+      <a href="https://github.com/sundas-saleem" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      <a href="https://linkedin.com/in/sundas-saleem-8b516879" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-number">6+</div><div class="stat-label">Years in production systems</div></div>
+      <div><div class="stat-number">2M+</div><div class="stat-label">Events processed daily</div></div>
+      <div><div class="stat-number">90%</div><div class="stat-label">Fewer production incidents</div></div>
+      <div><div class="stat-number">70%</div><div class="stat-label">Faster incident response</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Senior Software Engineer with 6+ years architecting scalable backend platforms, distributed systems, and AI-driven automation for high-volume, mission-critical environments at Afiniti — a global AI company whose systems run inside enterprise contact centres worldwide.</p>
+        <p>Core strength is backend and systems engineering across Python, Java, and C++ — real-time observability, event-streaming, call-routing engines, and telephony orchestration processing millions of interactions daily with zero downtime.</p>
+        <p>More recently, building in the AI/LLM space: multi-agent systems on Anthropic and OpenAI APIs, MCP server orchestration, and human-in-the-loop workflows adopted across engineering teams.</p>
+      </div>
+      <div class="about-meta">
+        <div class="meta-item">
+          <div class="meta-item-label">Location</div>
+          <div class="meta-item-value">Karachi, Pakistan · Remote-ready</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-item-label">Status</div>
+          <div class="meta-item-value">Open to new opportunities</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-item-label">Focus areas</div>
+          <div class="meta-item-value">Distributed systems · AI agents · Backend infrastructure</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-item-label">Education</div>
+          <div class="meta-item-value">BS Software Engineering · NED University, 2019</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <ul class="skill-list">
+          <li>Python</li><li>Java (Spring Boot)</li><li>C++</li>
+          <li>C#</li><li>TypeScript / Node.js</li><li>SQL</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Backend & Systems</div>
+        <ul class="skill-list">
+          <li>RESTful APIs & microservices</li><li>Event-driven architecture</li>
+          <li>Apache Kafka</li><li>gRPC & WebSocket</li>
+          <li>Concurrency & multithreading</li><li>Fault-tolerant distributed systems</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud & Delivery</div>
+        <ul class="skill-list">
+          <li>AWS (Lambda, Amazon Connect)</li><li>Docker & Kubernetes</li>
+          <li>CI/CD & GitHub Actions</li><li>OpenTelemetry</li><li>Prometheus & Grafana</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">AI & Agents</div>
+        <ul class="skill-list">
+          <li>AI agent development</li><li>MCP server design</li>
+          <li>Anthropic & OpenAI APIs</li><li>RAG pipelines</li>
+          <li>Human-in-the-loop workflows</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Databases</div>
+        <ul class="skill-list">
+          <li>PostgreSQL & MySQL</li><li>Redis</li><li>Kafka</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Real-Time & Voice</div>
+        <ul class="skill-list">
+          <li>SIP protocol</li><li>Twilio, Five9, Avaya</li>
+          <li>Genesys, NICE inContact</li><li>Amazon Connect</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Work history</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Jan 2025 – Jun 2026</div>
+          <div class="exp-company">Afiniti, Pakistan</div>
+        </div>
+        <div>
+          <div class="exp-title">Senior Software Engineer</div>
+          <div class="exp-desc">Owned backend architecture for enterprise real-time telephony platforms and led AI agent adoption across the engineering team.</div>
+          <ul class="exp-bullets">
+            <li>Reduced critical production incidents by ~90% by redesigning a single-threaded C++ call-routing service into a multithreaded architecture, sustaining 2M+ calls/day with zero downtime.</li>
+            <li>Built a real-time analytics platform with Kafka processing 2M+ events/day, plus AWS Lambda orchestration services propagating agent configurations across distributed environments.</li>
+            <li>Architected a reusable OpenTelemetry instrumentation library adopted across 10+ microservices — cutting troubleshooting effort by 70%.</li>
+            <li>Designed a multi-agent AI system on Anthropic and OpenAI APIs — PR review, code review, Jira, and log-analysis agents orchestrated via MCP servers.</li>
+            <li>Led end-to-end ownership of 4 production microservices for real-time voice serving multiple enterprise clients.</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="exp-divider">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Oct 2021 – Jan 2025</div>
+          <div class="exp-company">Afiniti, Pakistan</div>
+        </div>
+        <div>
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-desc">Designed backend services, test automation, and real-time telephony integrations used across engineering teams.</div>
+          <ul class="exp-bullets">
+            <li>Designed REST APIs and integrations for Twilio, Five9, Avaya, and NICE inContact — cutting integration defects by 40%.</li>
+            <li>Built Java test automation simulating 100+ concurrent agents and 1M+ calls end-to-end — achieving 95% production coverage before every release.</li>
+            <li>Built a Python log analytics platform automating diagnostics — improving incident resolution efficiency by 45%.</li>
+            <li>Developed automated testing frameworks in Java, C++, Python, C#, and Node.js, reducing manual testing effort by 50%.</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="exp-divider">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Dec 2019 – Oct 2021</div>
+          <div class="exp-company">Afiniti, Pakistan</div>
+        </div>
+        <div>
+          <div class="exp-title">Analyst Software Engineer</div>
+          <div class="exp-desc">Built telephony integration and validation platforms adopted as engineering-wide standards.</div>
+          <ul class="exp-bullets">
+            <li>Built a telephony platform in Java Spring Boot integrating multiple third-party providers behind unified REST APIs.</li>
+            <li>Designed a Node.js simulation platform supporting REST, TCP, and WebSocket for end-to-end validation.</li>
+            <li>Built a distributed C++ integration testing platform — cutting defect escape rate by 95%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p>Open to backend, distributed systems, and AI infrastructure roles — remote or Karachi-based. If you're working on something interesting, I'd like to hear about it.</p>
+        <div class="contact-links">
+          <a href="mailto:sundask4.sk@gmail.com" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sundask4.sk@gmail.com
+          </a>
+          <a href="https://github.com/sundas-saleem" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            github.com/sundas-saleem
+          </a>
+          <a href="https://linkedin.com/in/sundas-saleem-8b516879" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            linkedin.com/in/sundas-saleem-8b516879
+          </a>
+        </div>
+      </div>
+      <div class="contact-avail">
+        <p><span class="dot"></span><strong>Available for new roles</strong></p>
+        <p style="margin-top:0.75rem;">Open to remote-first positions globally and onsite roles in Karachi. Particularly interested in backend infrastructure, distributed systems, and AI/agent development.</p>
+        <p style="margin-top:0.75rem;">Response time: within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sundas Saleem &nbsp;·&nbsp; Karachi, Pakistan &nbsp;·&nbsp; sundask4.sk@gmail.com</p>
+</footer>
+
+<script>
+(function() {
+  var canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var nodes = [];
+  var W, H;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function init() {
+    nodes = [];
+    var count = Math.floor((W * H) / 14000);
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var maxDist = 120;
+
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = '#4A90C4';
+      ctx.fill();
+
+      for (var j = i + 1; j < nodes.length; j++) {
+        var m = nodes[j];
+        var dx = n.x - m.x, dy = n.y - m.y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < maxDist) {
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.strokeStyle = 'rgba(74,144,196,' + (1 - dist/maxDist) * 0.5 + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  init();
+  draw();
+  window.addEventListener('resize', function() { resize(); init(); });
+})();
+</script>
+
+</body>
+</html>
